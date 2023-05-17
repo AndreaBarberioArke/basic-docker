@@ -1,5 +1,8 @@
 name: learn-github-actions
+
+# Events for the workflow
  on:
+  push
   workflow_dispatch:
    pull_request:
     branches:
@@ -16,3 +19,53 @@ jobs:
           node-version: "16.19.0"
       - run: npm install
       run: npm install
+
+
+
+# name: "Build and test"
+
+# # Event for the workflow
+# on:
+#   workflow_dispatch:
+#   pull_request:
+#     branches:
+#       - main
+#       - feat/**
+#       - fix/**
+
+# # List of jobs
+# jobs:
+#   test:
+#     # Operating System
+#     runs-on: ubuntu-latest
+#     # Job steps
+#     steps:
+#       - uses: actions/checkout@v2
+#         with:
+#           fetch-depth: 0
+#       - uses: pnpm/action-setup@v2.2.1
+#         with:
+#           version: 7.1.7
+#       - run: pnpm install --frozen-lockfile
+
+#       - name: Build
+#         run: pnpm build
+
+#       - uses: ArtiomTr/jest-coverage-report-action@v2
+#         id: coverage
+#         with:
+#           output: report-markdown
+#           package-manager: pnpm
+#           annotations: failed-tests
+#       - uses: marocchino/sticky-pull-request-comment@v2
+#         with:
+#           message: ${{ steps.coverage.outputs.report }}
+
+#       - name: Codecov - upload coverage report
+#         uses: codecov/codecov-action@v3
+#         with:
+#           token: 96a2485c-9c63-4fa0-b7d3-7568f75cc610
+#           flags: unittests # optional
+#           name: codecov-umbrella # optional
+#           fail_ci_if_error: true # optional (default = false)
+#           verbose: true # optional (default = false)
