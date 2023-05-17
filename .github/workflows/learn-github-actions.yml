@@ -1,13 +1,13 @@
 name: learn-github-actions
 
-# Events for the workflow
- on:
+on:
   workflow_dispatch:
-   pull_request:
+  pull_request:
     branches:
       - main
       - feat/**
       - fix/**
+
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
@@ -17,4 +17,4 @@ jobs:
         with:
           node-version: "16.19.0"
       - run: npm install
-      run: npm install
+      - run: npm install
